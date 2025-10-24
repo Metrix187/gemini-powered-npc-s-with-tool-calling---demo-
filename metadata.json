@@ -1,0 +1,5 @@
+{
+  "name": "Pokémon AI NPC demo",
+  "description": "A retro-style web game where you can walk around and have dynamic, AI-powered conversations with various characters using Google's Gemini API.",
+  "requestFramePermissions": []
+}

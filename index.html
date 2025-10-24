@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon AI Adventure</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0f172a; /* A dark slate blue for the background */
+    }
+    .font-press-start { 
+      font-family: 'Press Start 2P', cursive; 
+      text-shadow: 2px 2px #00000020;
+    }
+    /* Custom scrollbar for a more retro feel */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e0f8d0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #346856;
+      border-radius: 0;
+      border: 2px solid #081820;
+    }
+    /* Weather Effects */
+    @keyframes fall {
+      to { transform: translateY(100vh); }
+    }
+    .raindrop {
+      position: absolute;
+      top: -20px;
+      width: 1px;
+      height: 15px;
+      background: rgba(174,194,224,0.8);
+      animation: fall linear infinite;
+      pointer-events: none;
+    }
+    .snowflake {
+      position: absolute;
+      top: -20px;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      pointer-events: none;
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.25.0"
+  }
+}
+</script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
