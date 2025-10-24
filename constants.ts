@@ -1,8 +1,20 @@
 import type { NPC } from './types';
 
+/**
+ * The size of the game grid.
+ * @type {number}
+ */
 export const GRID_SIZE = 15;
+/**
+ * The size of each tile in the game grid.
+ * @type {number}
+ */
 export const TILE_SIZE = 40; // Larger for better visibility
 
+/**
+ * An array of non-player characters (NPCs) in the game.
+ * @type {NPC[]}
+ */
 export const NPCS: NPC[] = [
   {
     id: 1,
