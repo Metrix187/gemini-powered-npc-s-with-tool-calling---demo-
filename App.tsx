@@ -6,6 +6,13 @@ import { createChatSession, sendMessage } from './services/geminiService';
 
 const IS_API_CONFIGURED = !!process.env.API_KEY;
 
+/**
+ * A component that renders visual effects for the current weather and time of day.
+ * @param {object} props - The component's props.
+ * @param {Weather} props.weather - The current weather.
+ * @param {TimeOfDay} props.timeOfDay - The current time of day.
+ * @returns {JSX.Element} - The rendered WeatherEffects component.
+ */
 const WeatherEffects = ({ weather, timeOfDay }: { weather: Weather, timeOfDay: TimeOfDay }) => {
   const rainDrops = weather === 'rainy' ? Array.from({ length: 50 }).map((_, i) => (
     <div key={i} className="raindrop" style={{ 
@@ -32,6 +39,18 @@ const WeatherEffects = ({ weather, timeOfDay }: { weather: Weather, timeOfDay: T
   );
 };
 
+/**
+ * A control panel for changing the weather and time of day.
+ * @param {object} props - The component's props.
+ * @param {Weather} props.weather - The current weather.
+ * @param {TimeOfDay} props.timeOfDay - The current time of day.
+ * @param {function} props.setWeather - A function to set the weather.
+ * @param {function} props.setTimeOfDay - A function to set the time of day.
+ * @param {boolean} props.isDebugMode - A boolean indicating whether debug mode is enabled.
+ * @param {function} props.setIsDebugMode - A function to set the debug mode.
+ * @param {function} props.onClose - A function to close the control panel.
+ * @returns {JSX.Element} - The rendered WeatherControlPanel component.
+ */
 const WeatherControlPanel = ({
   weather, timeOfDay, setWeather, setTimeOfDay, isDebugMode, setIsDebugMode, onClose
 }: {
@@ -85,6 +104,10 @@ const WeatherControlPanel = ({
   )
 }
 
+/**
+ * The main application component.
+ * @returns {JSX.Element} The rendered App component.
+ */
 const App = () => {
   const [playerPos, setPlayerPos] = useState<PlayerPosition>({ x: 5, y: 5 });
   const [direction, setDirection] = useState<Direction>('down');
@@ -106,6 +129,10 @@ const App = () => {
   const [isDebugMode, setIsDebugMode] = useState(false);
 
 
+  /**
+   * Starts a conversation with an NPC.
+   * @param {NPC} npc - The NPC to start a conversation with.
+   */
   const startConversation = useCallback((npc: NPC) => {
     if (!chatSessions.has(npc.id)) {
       const newChat = createChatSession(npc.systemPrompt);
@@ -183,6 +210,9 @@ const App = () => {
     conversationEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [conversationHistory, isLoading]);
 
+  /**
+   * Sends a message to the current NPC.
+   */
   const handleSendMessage = async () => {
     if (!userInput.trim() || !selectedNPC || !IS_API_CONFIGURED) return;
 

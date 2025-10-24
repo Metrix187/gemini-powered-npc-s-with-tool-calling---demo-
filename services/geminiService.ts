@@ -24,8 +24,8 @@ const functionDeclarations: FunctionDeclaration[] = [
 
 /**
  * Creates a new chat session with a specific system prompt.
- * @param systemPrompt The system instruction for the AI model.
- * @returns A Chat instance.
+ * @param {string} systemPrompt - The system instruction for the AI model.
+ * @returns {Chat} - A Chat instance.
  */
 export function createChatSession(systemPrompt: string): Chat {
   const model = ai.chats.create({
@@ -40,11 +40,11 @@ export function createChatSession(systemPrompt: string): Chat {
 
 /**
  * Sends a message to an existing chat session and gets the response, handling tool calls.
- * @param chat The Chat instance to use.
- * @param message The user's message.
- * @param weather The current game weather.
- * @param timeOfDay The current game time of day.
- * @returns An object containing the AI's text response and any tool calls it made.
+ * @param {Chat} chat - The Chat instance to use.
+ * @param {string} message - The user's message.
+ * @param {Weather} weather - The current game weather.
+ * @param {TimeOfDay} timeOfDay - The current game time of day.
+ * @returns {Promise<GeminiResponse>} - An object containing the AI's text response and any tool calls it made.
  */
 export async function sendMessage(
     chat: Chat, 
